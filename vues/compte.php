@@ -1,6 +1,7 @@
 <h2 class="titre">ESPACE PROFESSEUR</h2>
 <h3 class="titre">Changer son login et/ou son mot de passe</h3>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"/>
     <p>
         Login :
         <input type="text" name="loginP" value="<?php echo $vue['loginP']; ?>" onFocus="this.value='';" />
