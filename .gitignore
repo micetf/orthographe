@@ -31,3 +31,10 @@ datas/professeurs/
 datas/demandes/
 backup-prof/
 datas/*.txt
+
+# ============================================================
+# Fichiers d'administration (sensibles, hors dépôt public)
+# ============================================================
+datas/admin.php
+datas/consulter.php
+datas/eleves-sans-prof.php
