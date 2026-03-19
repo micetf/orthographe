@@ -1,6 +1,6 @@
 services:
   web:
-    image: php:5.6-apache
+    build: ./docker/php
     container_name: entrainement_ortho
     ports:
       - "8080:80"
