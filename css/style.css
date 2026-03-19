@@ -1,0 +1,248 @@
+body
+{
+  font-family:comic sans ms;
+  background-color:#536E7D;
+  color:#F2B28D;
+  font-size:12pt;
+}
+input
+{
+  font-size:12pt;
+}
+label
+{
+	cursor:help;
+}
+a, a:visited {
+    color:#786056;
+}
+a:hover {
+    font-weight:bold;
+}
+#conteneur
+{
+	visibility:hidden;
+}
+#noscript
+{
+  color:red;
+}
+#entete
+{
+  margin:1%;
+  text-align:center;
+  background-color:#1A3540;
+  margin-bottom:10px;
+  border:3px solid #F2DCB3;
+}
+#logo
+{
+  margin:1%;
+  float:left;
+  width:20%;
+}
+#courriel
+{
+  margin:1%;
+  float:right;
+  width:20%;
+  line-height:56px;
+}
+#courriel a
+{
+  color:#F2DCB3;
+  font-weight:bold;
+  text-decoration:overline underline;
+}
+img
+{
+  border:none;
+}
+#bgx
+{
+  float:left;
+  width:18%;
+  margin:1%;
+  background-color:#1A3540;
+}
+#bgx input, #phrase input
+{
+  width:80%;
+}
+#bp
+{
+  clear:both;
+  margin:1%;
+  text-align:center;
+  background-color:#1A3540;
+  margin-bottom:10px;
+  border:3px solid #F2DCB3;
+}
+.deconnexion
+{
+  text-decoration: overline underline;
+  font-weight: bold;
+  color:#1A3540;
+}
+#professeur, #eleve, #activite
+{
+  width:90%;
+  margin:auto;
+  margin-bottom:10px;
+  padding-bottom:10px;
+  text-align:center;
+}
+#professeur, .professeur
+{
+  background-color:#F2DCB3;
+  color:#536E7D;
+}
+#eleve, .eleve
+{
+  background-color:#F2B28D;
+  color:#536E7D;
+}
+#activite
+{
+  background-color:#536E7D;
+  color:#F2B28D;
+}
+#contenu
+{
+  float:right;
+  width:76%;
+  margin:1%;
+  padding:1%;
+  background-color:#1A3540;
+}
+#oeil
+{
+  width:200px;
+  margin:auto;
+}
+#contenu a
+{
+  text-decoration:overline underline;
+  color:#F2DCB3;
+  font-weight:bold;
+}
+.titre, .centre
+{
+  text-align:center;
+}
+.titre a
+{
+    text-decoration:overline underline;
+    font-weight:bold;
+    color:#F2DCB3;
+}
+div.titre form {
+  display:inline-block;
+  margin: auto;
+  padding: 5px;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border: 1px solid #F2DCB3;
+}
+.majuscule
+{
+  background-color:#1A3540;
+  color:#F2DCB3;
+}
+.message
+{
+  color:red;
+}
+.gras
+{
+  font-weight:bold;
+}
+.categorie
+{
+  font-weight:bold;
+  background-color:#786056;
+  color:#F2DCB3;
+}
+.souligne
+{
+  text-decoration:underline;
+}
+#jeu_on
+{
+  text-align:center;
+	visibility:hidden;
+  display:none;
+}
+#modele
+{
+  font-size:16pt;
+  color:#F2DCB3;
+  border: 2px solid #F2DCB3;
+  background:#536E7D;
+  margin:auto;
+  margin-top:2%;
+  width:90%;
+}
+#saisie
+{
+  text-align:center;
+  margin:auto;
+  margin-top:2%;
+  width:90%;
+}
+#consigne
+{
+  text-align:justify;
+  border: 2px solid #F2DCB3;
+  color:#786056;
+  background:#F2DCB3;
+}
+ol#liste
+{
+  background:#536E7D;
+  border:2px solid #F2DCB3;
+  width:30%;
+  margin:auto;
+  padding-left:5%;
+}
+ol#listeBis
+{
+  background:#536E7D;
+  border:2px solid #F2DCB3;
+  width:80%;
+  margin:auto;
+  padding-left:5%;
+}
+#captcha
+{
+  margin:auto;
+  text-align:center;
+}
+#captcha img
+{
+  height:60px;
+}
+table
+{
+  width:100%;
+  border-collapse: collapse
+}
+td.bord
+{
+  border-top:1px solid #F2DCB3;
+  border-bottom:1px solid #F2DCB3;
+}
+td.quart
+{
+  width:25%;
+}
+td.quatrevingts
+{
+  width:80%;
+}
+td.vingt
+{
+  width:20%;
+}
+
