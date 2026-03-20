@@ -33,7 +33,7 @@ function is_eleve($infos)
     }
 
     $prefixe = 'eo_'.md5($infos['loginP']).'_'.md5($infos['loginE']);
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     while ($nom = $dir->read()) {
         if (strpos($nom, $prefixe) !== 0) {
             continue;

@@ -1,5 +1,6 @@
 <?php
 
+include 'config.php';
 include 'professeur.php';
 include 'eleve.php';
 include 'inscription.php';
@@ -42,15 +43,15 @@ function verifier_csrf()
 }
 
 $erreur = '';
-$config['loginP']    = 'login';
-$config['passwordP1'] = '          ';
-$config['passwordP2'] = '          ';
-$config['loginE']    = 'login';
-$config['passwordE1'] = '          ';
-$config['passwordE2'] = '          ';
-$config['email']     = 'identifiant@domaine.fr';
-$config['phrase']    = 'mot(s) ou phrase(s) à mémoriser';
-$config['lgPhrase']  = 140;
+$config['loginP']    = DEFAULT_LOGIN_P;
+$config['passwordP1'] = DEFAULT_PASSWORD_P;
+$config['passwordP2'] = DEFAULT_PASSWORD_P;
+$config['loginE']    = DEFAULT_LOGIN_E;
+$config['passwordE1'] = DEFAULT_PASSWORD_E;
+$config['passwordE2'] = DEFAULT_PASSWORD_E;
+$config['email']     = DEFAULT_EMAIL;
+$config['phrase']    = DEFAULT_PHRASE;
+$config['lgPhrase']  = LG_PHRASE_MAX;
 
 $csrf_valide = true;
 $actions_protegees = array(

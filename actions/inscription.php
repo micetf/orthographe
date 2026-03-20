@@ -9,13 +9,13 @@ function is_emailP_OK($email, $config)
         return 'L\'adresse de messagerie est invalide.';
     }
 
-    $dir = dir('./datas/professeurs/');
+    $dir = dir(DIR_PROFESSEURS);
     while ($nom = $dir->read()) {
         if (strpos($nom, md5($email).'.txt') !== false) {
             return 'Vous avez déjà un compte utilisateur.';
         }
     }
-    $dir = dir('./datas/demandes/');
+    $dir = dir(DIR_DEMANDES);
     while ($nom = $dir->read()) {
         if (strpos($nom, md5($email).'.txt') !== false) {
             unlink('datas/demandes/'.$nom);
@@ -35,7 +35,7 @@ function is_loginP_OK($login, $config)
     if (preg_match('#[^a-z0-9]#', $login)) {
         return 'Le login est incorrect';
     }
-    $dir = dir('./datas/professeurs/');
+    $dir = dir(DIR_PROFESSEURS);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($login)) !== false) {
             return 'Ce login est déjà utilisé.';
@@ -195,7 +195,7 @@ function is_modificationP_OK($infos, $session, $config)
     }
 
     // Mise à jour du fichier professeur
-    $dir = dir('./datas/professeurs/');
+    $dir = dir(DIR_PROFESSEURS);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($session['loginP'])) !== false) {
             $ancien_chemin = 'datas/professeurs/'.$nom;
@@ -236,7 +236,7 @@ function is_modificationP_OK($infos, $session, $config)
 
             // Mettre à jour les fichiers élèves si le login professeur change
             if ($infos['loginP'] !== $session['loginP']) {
-                $dir2 = dir('./datas/eleves/');
+                $dir2 = dir(DIR_ELEVES);
                 while ($nom2 = $dir2->read()) {
                     if (strpos($nom2, 'eo_'.md5($session['loginP'])) !== false) {
                         $ancien_eleve = 'datas/eleves/'.$nom2;

@@ -2,8 +2,8 @@
 
 function logErreurConnexion($login)
 {
-    $s = file_get_contents('./datas/log.txt');
-    file_put_contents('./datas/log.txt', $s.PHP_EOL.date('Y-m-d H:i:s').' LOGIN_ECHOUE: '.$login);
+    $s = file_get_contents(DIR_LOG);
+    file_put_contents(DIR_LOG, $s.PHP_EOL.date('Y-m-d H:i:s').' LOGIN_ECHOUE: '.$login);
 }
 
 /**
@@ -46,7 +46,7 @@ function is_professeur($infos)
     }
 
     $prefixe = 'eo_'.md5($infos['loginP']).'_';
-    $dir = dir('./datas/professeurs/');
+    $dir = dir(DIR_PROFESSEURS);
     while ($nom = $dir->read()) {
         if (strpos($nom, $prefixe) !== 0) {
             continue;

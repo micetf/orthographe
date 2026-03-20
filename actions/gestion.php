@@ -2,7 +2,7 @@
 
 function loginE_existe($professeur, $login)
 {
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur).'_'.md5($login)) === 0) {
             return 'Ce login est déjà utilisé.';
@@ -110,7 +110,7 @@ function is_creationE_OK($professeur, $infos, $config)
     }
 
     // Ajout du login élève dans le fichier professeur
-    $dir = dir('./datas/professeurs/');
+    $dir = dir(DIR_PROFESSEURS);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur)) !== false) {
             $chemin = 'datas/professeurs/'.$nom;
@@ -147,7 +147,7 @@ function is_modificationE_OK($professeur, $infos, $config)
     }
 
     // Mise à jour du login élève dans le fichier professeur
-    $dir = dir('./datas/professeurs/');
+    $dir = dir(DIR_PROFESSEURS);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur)) !== false) {
             $chemin = 'datas/professeurs/'.$nom;
@@ -159,10 +159,10 @@ function is_modificationE_OK($professeur, $infos, $config)
     }
 
     // Mise à jour du fichier élève
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur).'_'.md5($infos['login'])) !== false) {
-            $old_chemin = 'datas/eleves/'.$nom;
+            $old_chemin = DIR_ELEVES.$nom;
             $donnees    = lire_donnees_fichier($old_chemin);
             $nouveau_hash = password_hash($infos['passwordE1'], PASSWORD_BCRYPT);
             $new_chemin = 'datas/eleves/eo_'.md5($professeur).'_'.md5($infos['loginE']).'.txt';
@@ -179,7 +179,7 @@ function is_modificationE_OK($professeur, $infos, $config)
 function suppressionE($professeur, $infos)
 {
     // Suppression du login élève dans le fichier professeur
-    $dir = dir('./datas/professeurs/');
+    $dir = dir(DIR_PROFESSEURS);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur)) !== false) {
             $chemin  = 'datas/professeurs/'.$nom;
@@ -191,10 +191,10 @@ function suppressionE($professeur, $infos)
     }
 
     // Suppression du fichier élève
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur).'_'.md5($infos['loginE'])) !== false) {
-            unlink('datas/eleves/'.$nom);
+            unlink(DIR_ELEVES.$nom);
             break;
         }
     }
@@ -202,10 +202,10 @@ function suppressionE($professeur, $infos)
 
 function suppressionP($professeur, $eleve, $infos)
 {
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur).'_'.md5($eleve)) !== false) {
-            $chemin  = 'datas/eleves/'.$nom;
+            $chemin  = DIR_ELEVES.$nom;
             $donnees = lire_donnees_fichier($chemin);
             if (!empty($infos['phrase'])) {
                 $donnees = preg_replace('/^[^#]*/', '0,3600', $donnees);
@@ -221,10 +221,10 @@ function suppressionP($professeur, $eleve, $infos)
 
 function ajoutP($professeur, $eleve, $phrase)
 {
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur).'_'.md5($eleve)) !== false) {
-            $chemin  = 'datas/eleves/'.$nom;
+            $chemin  = DIR_ELEVES.$nom;
             $donnees = lire_donnees_fichier($chemin);
             $donnees = preg_replace('/^[^#]*/', '0,3600', $donnees);
             $donnees .= stripcslashes(trim($phrase)).'#';
@@ -236,10 +236,10 @@ function ajoutP($professeur, $eleve, $phrase)
 
 function majResultats($professeur, $eleve, $reussites, $chrono)
 {
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur).'_'.md5($eleve)) !== false) {
-            $chemin  = 'datas/eleves/'.$nom;
+            $chemin  = DIR_ELEVES.$nom;
             $donnees = lire_donnees_fichier($chemin);
             $donnees = preg_replace('/^[^#]*/', $reussites.','.$chrono, $donnees);
             ecrire_donnees_fichier($chemin, $donnees);
@@ -250,10 +250,10 @@ function majResultats($professeur, $eleve, $reussites, $chrono)
 
 function phrase_existe($professeur, $eleve, $phrase)
 {
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur).'_'.md5($eleve)) !== false) {
-            $donnees = lire_donnees_fichier('datas/eleves/'.$nom);
+            $donnees = lire_donnees_fichier(DIR_ELEVES.$nom);
             if (strpos($donnees, '#'.trim($phrase).'#') !== false) {
                 return 'Ce texte a déjà été saisi.';
             }
@@ -279,7 +279,7 @@ function is_phrase_OK($phrase, $config)
 
 function lireEleves($professeur, $option = null)
 {
-    $dir = dir('./datas/professeurs/');
+    $dir = dir(DIR_PROFESSEURS);
     $donnees = '';
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur)) !== false) {
@@ -309,11 +309,11 @@ function lireEleves($professeur, $option = null)
 
 function lirePhrases($professeur, $eleve, $option = null)
 {
-    $dir = dir('./datas/eleves/');
+    $dir = dir(DIR_ELEVES);
     $donnees = '';
     while ($nom = $dir->read()) {
         if (strpos($nom, 'eo_'.md5($professeur).'_'.md5($eleve)) !== false) {
-            $donnees = lire_donnees_fichier('datas/eleves/'.$nom);
+            $donnees = lire_donnees_fichier(DIR_ELEVES.$nom);
             break;
         }
     }
