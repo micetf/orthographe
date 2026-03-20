@@ -20,7 +20,7 @@ function is_loginE_OK($login, $config)
         return 'Le login doit comprendre au moins 4 caractères';
     }
     if (preg_match('#[^a-z0-9]#', $login)) {
-        return 'Le login est incorrect';
+        return 'Le login ne doit contenir que des lettres minuscules et des chiffres, sans caractères spéciaux.';
     }
     return '';
 }

@@ -33,7 +33,7 @@ function is_loginP_OK($login, $config)
         return 'Le login doit comprendre au moins 4 caractères';
     }
     if (preg_match('#[^a-z0-9]#', $login)) {
-        return 'Le login est incorrect';
+        return 'Le login ne doit contenir que des lettres minuscules et des chiffres, sans caractères spéciaux.';
     }
     $dir = dir(DIR_PROFESSEURS);
     while ($nom = $dir->read()) {
@@ -53,7 +53,7 @@ function is_passwordP1_OK($password, $config)
         return 'Le mot de passe doit comprendre au moins 4 caractères';
     }
     if (preg_match('#[^a-zA-Z0-9]#', $password)) {
-        return 'Le mot de passe est incorrect';
+        return 'Le mot de passe ne doit contenir que des lettres et des chiffres, sans caractères spéciaux.';
     }
     return '';
 }
