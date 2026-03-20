@@ -30,7 +30,7 @@ foreach ($vue['eleves'] as $eleve) {
 <tr>
 <form action="" method="post">
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"/>
-    <td class="vingt bord"><?php echo $eleve[0]; ?>
+    <td class="vingt bord"><?php echo htmlspecialchars($eleve[0]); ?>
     <input type="hidden" name="action" value="suppressionE"/>
     <input type="hidden" name="loginE" value="<?php echo $eleve[0]; ?>"/></td>
     <td class="bord">
@@ -41,11 +41,11 @@ foreach ($vue['eleves'] as $eleve) {
         <input type="submit" name="valider" value="supprimer"/>
     </td>
     <td class="bord">
-        <a href="<?php echo $_SERVER['PHP_SELF'] . '?bg=eleve&login=' . $eleve[0]; ?>">modifier</a>
+        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?bg=eleve&login=' . $eleve[0]); ?>">modifier</a>
     </td>
     <td class="vingt bord">
         gérer les
-        <a href="<?php echo $_SERVER['PHP_SELF'] . '?bg=phrases&login=' . $eleve[0]; ?>">
+        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?bg=phrases&login=' . $eleve[0]); ?>">
             phrases
         </a>
     </td>

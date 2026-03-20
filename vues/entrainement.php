@@ -1,14 +1,14 @@
 <h2 class="titre">ESPACE ELEVE</h2>
 <h3 class="titre">
-Phrases de <span class="majuscule"><?php echo $vue['eleve']; ?></span> élève de <span class="majuscule"><?php echo $vue['professeur']; ?></span>
+Phrases de <span class="majuscule"><?php echo htmlspecialchars($vue['eleve']); ?></span> élève de <span class="majuscule"><?php echo htmlspecialchars($vue['professeur']); ?></span>
 </h3>
 <div id="jeu_off">
 <ol id="listeBis">
-<?php 
+<?php
 foreach ($vue['phrases'] as $i => $phrase) {
-?>
+    ?>
 <li><?php echo $phrase; ?></li>
-<?php 
+<?php
 }
 shuffle($vue['phrases']);
 ?>
@@ -17,7 +17,7 @@ shuffle($vue['phrases']);
 </div>
 
 <script type="text/javascript">
-var mots = new Array(<?php echo '"'.implode('","',$vue['phrases']).'"'; ?>);
+var mots = new Array(<?php echo '"'.implode('","', $vue['phrases']).'"'; ?>);
 var iMot = 0;
 var motMasque = '';
 var modele = 'avec';

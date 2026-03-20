@@ -19,7 +19,7 @@ foreach ($vue['phrases'] as $phrase) {
     ?>
 <tr>
 <form action="" method="post">
-<td class="quatrevingts bord"><?php echo $phrase; ?> <input type="hidden" name="phrase" value="<?php echo $phrase; ?>"/></td>
+<td class="quatrevingts bord"><?php echo htmlspecialchars($phrase); ?> <input type="hidden" name="phrase" value="<?php echo htmlspecialchars($phrase); ?>"/></td>
 <td class="vingt bord centre">
 <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"/>
 <input type="hidden" name="action" value="suppressionP"/>
