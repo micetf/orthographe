@@ -1,7 +1,9 @@
 <?php
 
-$demandes   = './datas/demandes/';
-$professeurs = './datas/professeurs/';
+include 'actions/config.php';
+
+$demandes   = DIR_DEMANDES;
+$professeurs = DIR_PROFESSEURS;
 $accueil    = preg_replace('#validation#', 'index', $_SERVER['PHP_SELF']);
 
 if (isset($_GET['l']) && isset($_GET['e'])) {
